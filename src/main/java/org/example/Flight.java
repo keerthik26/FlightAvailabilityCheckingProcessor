@@ -78,14 +78,12 @@ public class Flight {
     }
 
     public String customerMessage() {
-        return "Flight{" +
-                "flightNo='" + flightNo + '\'' +
-                ", origin='" + origin + '\'' +
-                ", depDate='" + depDate + '\'' +
-                ", depTime='" + depTime + '\'' +
-                ", destination='" + destination + '\'' +
-                ", arrDate='" + arrDate + '\'' +
-                ", arrTime='" + arrTime + '\'' +
-                '}';
+        return
+                "Flight *" + flightNo + '*' +
+                " departs on *" + depDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy")) + '*' +
+                " at *" + depTime + '*' +
+                " reaches *" + destination + '*' +
+                " on *" + arrDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy")) + '*' +
+                " at *" + arrTime + '*' ;
     }
 }

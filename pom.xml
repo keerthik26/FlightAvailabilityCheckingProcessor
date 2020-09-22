@@ -30,6 +30,11 @@
       <artifactId>jsoup</artifactId>
       <version>1.13.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.twilio.sdk</groupId>
+      <artifactId>twilio</artifactId>
+      <version>7.55.2</version>
+    </dependency>
   </dependencies>
 
   <build>

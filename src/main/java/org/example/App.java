@@ -7,31 +7,48 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
-/**
- * Hello world!
- */
+
 public class App {
+    static final String originCountry = "Sydney";
+    static final int month = 10;
+    static final int onwardsDate = 1;
     public static void main(String[] args) {
 
         String page = "https://mea.gov.in/phase-6.htm";
-        final String originCountry = "Sydney";
-        int month = 9;
-        int onwardsDate = 1;
-        try {
-            while (true) {
-                Connection conn = Jsoup.connect(page);
-                conn.get().getElementById("innerContent").getElementsByTag("tr").stream()
-                        .filter(element -> element.select("td").size() > 0)
-                        .map(row -> transformToFlight(row))
-                        .filter(flight -> flight.getOrigin().equalsIgnoreCase(originCountry) && flight.getArrDate().isAfter(LocalDate.of(2020, month, onwardsDate)))
-                        .map(Flight::customerMessage).forEach(System.out::println);
+        String flightsMessage = "";
+
+        WhatsappSender whatsappSender = new WhatsappSender();
+        while (true) {
+            try {
+                String message = getAvailableFlights(page);
+                System.out.println("*** Message size is: " + message.length() + " ***");
+                // System.out.println(message);
+                if(!flightsMessage.equalsIgnoreCase(message)){
+                    flightsMessage = message;
+                    String customerMessage = message.length() == 0 ? "No flights" : message;
+                    System.out.println("Sent msg: " + customerMessage);
+                    whatsappSender.sendMessage(customerMessage);
+                    whatsappSender.sendVoiceCall(message);
+                }
                 Thread.sleep(15 * 60 * 1000);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
             }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
         }
 
+    }
+
+    private static String getAvailableFlights(String page) throws IOException {
+        Connection conn = Jsoup.connect(page);
+        return conn.get().getElementById("innerContent").getElementsByTag("tr").stream()
+                .filter(element -> element.select("td").size() > 0)
+                .map(row -> transformToFlight(row))
+                .filter(flight -> flight.getOrigin().equalsIgnoreCase(App.originCountry) && flight.getArrDate().isAfter(LocalDate.of(2020, App.month, App.onwardsDate)))
+                .sorted(Comparator.comparing(Flight::getArrDate))
+                .map(Flight::customerMessage).collect(Collectors.joining("\r\n"));
     }
 
     private static Flight transformToFlight(Element row) {
