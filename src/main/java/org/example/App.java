@@ -19,7 +19,7 @@ public class App {
     static final int month = 10;
     static final int onwardsDate = 1;
     public static void main(String[] args) {
-        System.out.println("KK number is: " + System.getenv("$KK_NO"));
+        System.out.println("KK number is: " + System.getenv("KK_NO"));
         String page = "https://mea.gov.in/phase-6.htm";
         String flightsMessage = "";
 

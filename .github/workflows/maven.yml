@@ -27,7 +27,7 @@ jobs:
         path: staging
     - shell: bash
       env:
-        KK_NO: ${{ secrets.kk }}
+        KK_NO: ${{ secrets.KK }}
       run: java -jar staging/FlightCheckingProcessor-jar-with-dependencies.jar
 
 
