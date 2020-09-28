@@ -8,12 +8,12 @@ import com.twilio.type.PhoneNumber;
 import java.time.Month;
 
 public class WhatsappSender {
-    private final static String ACCOUNT_SID = "ACXXX";
-    public static final String AUTH_TOKEN = "XXX";
-    public static final String kk = "+XXX";
-    public static final String cv = "+XXX";
-    public static final String twilioWhatsapp = "+XXX";
-    public static final String twilioVoiceNum = "+XXX";
+    private final static String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
+    public static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
+    public static final String kk = System.getenv("KK_MOBILE");
+    public static final String cv = System.getenv("CV_MOBILE");;
+    public static final String twilioWhatsapp = System.getenv("TWILIO_WHATSAPP_NUM");
+    public static final String twilioVoiceNum = System.getenv("TWILIO_VOICE_NUM");
 
     public void sendMessage(String message){
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

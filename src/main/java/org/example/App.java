@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     static final String originCountry = "Sydney";
-    static final int month = 10;
+    static final int month = 9;
     static final int onwardsDate = 1;
     public static void main(String[] args) {
-        System.out.println("KK number is: " + System.getenv("KK_NO"));
+
         String page = "https://mea.gov.in/phase-6.htm";
         String flightsMessage = "";
 
@@ -36,8 +36,7 @@ public class App {
                     whatsappSender.sendMessage(customerMessage);
                     whatsappSender.sendVoiceCall(message);
                 }
-                Thread.sleep(15 * 0 * 1000);
-                return;
+                Thread.sleep(15 * 60 * 1000);
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
