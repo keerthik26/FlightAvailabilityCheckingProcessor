@@ -25,10 +25,6 @@ jobs:
       with:
         name: Package
         path: staging
-#    - shell: bash
-#      env:
-#        KK_NO: ${{ secrets.KK }}
-#      run: echo "$KK_NO" && java -jar staging/FlightCheckingProcessor-jar-with-dependencies.jar
     - name: Deploy jar to remote server
       uses: horochx/deploy-via-scp@master
       with:
@@ -38,6 +34,19 @@ jobs:
         port: 22
         user: ubuntu
         key: ${{ secrets.HOST_PASSWD }}
+    - shell: bash
+      env:
+        KK_NO: ${{ secrets.KK }}
+      run: echo "$KK_NO" && java -jar staging/FlightCheckingProcessor-jar-with-dependencies.jar
 
-
-
+    - name: Execute SSH commmands on remote server
+      uses: JimCronqvist/action-ssh@master
+      env:
+        KK_NO: ${{ secrets.KK }}
+      with:
+        hosts: 'ubuntu@${{ secrets.HOST_NAME }}'
+        privateKey: ${{ secrets.HOST_PASSWD }}
+        debug: false
+        command: |
+          ls -lah
+          echo "I am $KK_NO"
