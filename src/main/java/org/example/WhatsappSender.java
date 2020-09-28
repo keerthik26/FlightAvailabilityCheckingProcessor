@@ -11,7 +11,7 @@ import java.time.Month;
 
 public class WhatsappSender {
     private static final Logger logger = LoggerFactory.getLogger(WhatsappSender.class);
-    private final static String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
+    private  static final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
     public static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
     public static final String kk = System.getenv("KK_MOBILE");
     public static final String cv = System.getenv("CV_MOBILE");;
