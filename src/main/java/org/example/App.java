@@ -4,6 +4,8 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -12,11 +14,12 @@ import java.util.stream.Collectors;
 
 
 public class App {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
     static final String originCountry = "Sydney";
     static final int month = 10;
     static final int onwardsDate = 1;
     public static void main(String[] args) {
-
+        System.out.println("KK number is: " + System.getenv("KK_NO"));
         String page = "https://mea.gov.in/phase-6.htm";
         String flightsMessage = "";
 
@@ -24,12 +27,12 @@ public class App {
         while (true) {
             try {
                 String message = getAvailableFlights(page);
-                System.out.println("*** Message size is: " + message.length() + " ***");
+                logger.debug( " *** Message size is: " + message.length() + " ***");
                 // System.out.println(message);
                 if(!flightsMessage.equalsIgnoreCase(message)){
                     flightsMessage = message;
                     String customerMessage = message.length() == 0 ? "No flights" : message;
-                    System.out.println("Sent msg: " + customerMessage);
+                    logger.info("Sent msg: " + customerMessage);
                     whatsappSender.sendMessage(customerMessage);
                     whatsappSender.sendVoiceCall(message);
                 }
