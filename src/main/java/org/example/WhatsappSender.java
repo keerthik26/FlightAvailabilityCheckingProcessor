@@ -4,10 +4,13 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Call;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Month;
 
 public class WhatsappSender {
+    private static final Logger logger = LoggerFactory.getLogger(WhatsappSender.class);
     private final static String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
     public static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
     public static final String kk = System.getenv("KK_MOBILE");
@@ -16,17 +19,18 @@ public class WhatsappSender {
     public static final String twilioVoiceNum = System.getenv("TWILIO_VOICE_NUM");
 
     public void sendMessage(String message){
+        logger.info("Account SID: {}, Auth_token: {}", ACCOUNT_SID, AUTH_TOKEN);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
          Message.creator(
                 new PhoneNumber("whatsapp:"+kk),
                 new PhoneNumber("whatsapp:"+twilioWhatsapp),
                 message)
                 .create();
-        Message.creator(
+        /*Message.creator(
                 new PhoneNumber("whatsapp:"+cv),
                 new PhoneNumber("whatsapp:"+twilioWhatsapp),
                 message)
-                .create();
+                .create();*/
 
     }
 

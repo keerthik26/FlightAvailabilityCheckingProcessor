@@ -32,9 +32,10 @@ public class App {
                 if(!flightsMessage.equalsIgnoreCase(message)){
                     flightsMessage = message;
                     String customerMessage = message.length() == 0 ? "No flights" : message;
-                    logger.info("Sent msg: " + customerMessage);
+                    logger.info("Sending msg: " + customerMessage);
                     whatsappSender.sendMessage(customerMessage);
-                    whatsappSender.sendVoiceCall(message);
+                    logger.info("Sent message through Whatsapp");
+                    //whatsappSender.sendVoiceCall(message);
                 }
                 Thread.sleep(15 * 60 * 1000);
             } catch (IOException | InterruptedException e) {

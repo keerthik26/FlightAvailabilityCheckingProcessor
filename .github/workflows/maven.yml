@@ -48,4 +48,4 @@ jobs:
         privateKey: ${{ secrets.HOST_PASSWD }}
         debug: false
         command: |
-          java -jar FlightCheckingProcessor-jar-with-dependencies.jar
+          systemctl start flight-checker.service
