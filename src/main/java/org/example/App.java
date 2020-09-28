@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     static final String originCountry = "Sydney";
-    static final int month = 9;
+    static final int month = 10;
     static final int onwardsDate = 1;
     public static void main(String[] args) {
        /* logger.info("Account SID: {}, Auth_token: {}, KK_mobile: {}, CV_MOBILE: {}",
@@ -36,7 +36,7 @@ public class App {
                     logger.info("Sending msg: " + customerMessage);
                     whatsappSender.sendMessage(customerMessage);
                     logger.info("Sent message through Whatsapp");
-                    //whatsappSender.sendVoiceCall(message);
+                    whatsappSender.sendVoiceCall(message);
                 }
                 Thread.sleep(15 * 60 * 1000);
             } catch (IOException | InterruptedException e) {
