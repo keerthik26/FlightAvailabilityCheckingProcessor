@@ -28,7 +28,7 @@ jobs:
     - shell: bash
       env:
         KK_NO: ${{ secrets.KK }}
-      run: java -jar staging/FlightCheckingProcessor-jar-with-dependencies.jar
+      run: echo "$KK_NO" && java -jar staging/FlightCheckingProcessor-jar-with-dependencies.jar
 
 
 
