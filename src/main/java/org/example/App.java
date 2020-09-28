@@ -20,7 +20,7 @@ public class App {
     static final int onwardsDate = 1;
     public static void main(String[] args) {
         logger.info("Account SID: {}, Auth_token: {}, KK_mobile: {}, CV_MOBILE: {}",
-                System.getenv("TWILIO_ACCOUNT_SID"), System.getenv("TWILIO_AUTH_TOKEN"), System.getenv("KK_MOBILE"),System.getenv("CV_MOBILE"));
+                System.getenv("TWILIO_ACCOUNT_SID"), System.getenv("TWILIO_AUTH_TOKEN"), System.getenv("KK_MOBILE_ENV"),System.getenv("CV_MOBILE"));
         String page = "https://mea.gov.in/phase-6.htm";
         String flightsMessage = "";
 

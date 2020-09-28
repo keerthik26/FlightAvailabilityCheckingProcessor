@@ -37,7 +37,7 @@ jobs:
     - name: Execute SSH commmands on remote server
       uses: JimCronqvist/action-ssh@master
       env:
-        KK_MOBILE: ${{ secrets.KK_MOBILE }}
+        KK_MOBILE_ENV: ${{ secrets.KK_MOBILE }}
         CV_MOBILE: ${{ secrets.CV_MOBILE }}
         TWILIO_WHATSAPP_NUM: ${{ secrets.TWILIO_WHATSAPP_NUM }}
         TWILIO_VOICE_NUM: ${{ secrets.TWILIO_VOICE_NUM }}
