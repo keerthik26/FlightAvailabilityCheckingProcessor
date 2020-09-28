@@ -26,6 +26,7 @@ jobs:
       with:
         name: Package
         path: staging
-
+    - shell: bash
+      run: ls -ltr staging
 
 
