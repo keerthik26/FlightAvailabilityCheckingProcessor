@@ -48,4 +48,5 @@ jobs:
         privateKey: ${{ secrets.HOST_PASSWD }}
         debug: false
         command: |
+          sudo systemctl stop flight-checker.service
           sudo systemctl start flight-checker.service
