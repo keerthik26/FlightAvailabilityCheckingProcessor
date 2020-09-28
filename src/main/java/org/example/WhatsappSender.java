@@ -19,7 +19,6 @@ public class WhatsappSender {
     public static final String twilioVoiceNum = System.getenv("TWILIO_VOICE_NUM");
 
     public void sendMessage(String message){
-        logger.info("Account SID: {}, Auth_token: {}", ACCOUNT_SID, AUTH_TOKEN);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
          Message.creator(
                 new PhoneNumber("whatsapp:"+kk),
