@@ -49,7 +49,6 @@ jobs:
         debug: false
         command: |
           export KK_MOBILE= ${{ secrets.KK_MOBILE }}
-#          export CV_MOBILE= ${{ secrets.CV_MOBILE }}
           export TWILIO_WHATSAPP_NUM= ${{ secrets.TWILIO_WHATSAPP_NUM }}
           export TWILIO_VOICE_NUM= ${{ secrets.TWILIO_VOICE_NUM }}
           export TWILIO_ACCOUNT_SID= ${{ secrets.TWILIO_ACCOUNT_SID }}
