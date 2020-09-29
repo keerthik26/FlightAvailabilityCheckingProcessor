@@ -48,12 +48,10 @@ jobs:
         privateKey: ${{ secrets.HOST_PASSWD }}
         debug: false
         command: |
-          export KK_MOBILE_ENV="$KK_MOBILE"
+          export KK_MOBILE="$KK_MOBILE"
           export TWILIO_WHATSAPP_NUM="$TWILIO_WHATSAPP_NUM"
           export TWILIO_VOICE_NUM="$TWILIO_VOICE_NUM"
           export TWILIO_ACCOUNT_SID="$TWILIO_ACCOUNT_SID"
           export TWILIO_AUTH_TOKEN="$TWILIO_AUTH_TOKEN"
-          echo $KK_MOBILE_ENV
-          echo $TWILIO_ACCOUNT_SID
           sudo systemctl stop flight-checker.service
           sudo systemctl start flight-checker.service
