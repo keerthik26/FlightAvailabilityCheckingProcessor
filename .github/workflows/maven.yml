@@ -37,21 +37,21 @@ jobs:
     - name: Execute SSH commmands on remote server
       uses: JimCronqvist/action-ssh@master
       env:
-#        KK_MOBILE: ${{ secrets.KK_MOBILE }}
+        KK_MOBILE: ${{ secrets.KK_MOBILE }}
         CV_MOBILE: ${{ secrets.CV_MOBILE }}
-#        TWILIO_WHATSAPP_NUM: ${{ secrets.TWILIO_WHATSAPP_NUM }}
-#        TWILIO_VOICE_NUM: ${{ secrets.TWILIO_VOICE_NUM }}
-#        TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-#        TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TWILIO_WHATSAPP_NUM: ${{ secrets.TWILIO_WHATSAPP_NUM }}
+        TWILIO_VOICE_NUM: ${{ secrets.TWILIO_VOICE_NUM }}
+        TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
       with:
         hosts: 'ubuntu@${{ secrets.HOST_NAME }}'
         privateKey: ${{ secrets.HOST_PASSWD }}
         debug: false
         command: |
-          export KK_MOBILE= ${{ secrets.KK_MOBILE }}
-          export TWILIO_WHATSAPP_NUM= ${{ secrets.TWILIO_WHATSAPP_NUM }}
-          export TWILIO_VOICE_NUM= ${{ secrets.TWILIO_VOICE_NUM }}
-          export TWILIO_ACCOUNT_SID= ${{ secrets.TWILIO_ACCOUNT_SID }}
-          export TWILIO_AUTH_TOKEN= ${{ secrets.TWILIO_AUTH_TOKEN }}
+          export KK_MOBILE="$KK_MOBILE"
+          export TWILIO_WHATSAPP_NUM="$TWILIO_WHATSAPP_NUM"
+          export TWILIO_VOICE_NUM="$TWILIO_VOICE_NUM"
+          export TWILIO_ACCOUNT_SID="$TWILIO_ACCOUNT_SID"
+          export TWILIO_AUTH_TOKEN="$TWILIO_AUTH_TOKEN"
           sudo systemctl stop flight-checker.service
           sudo systemctl start flight-checker.service
