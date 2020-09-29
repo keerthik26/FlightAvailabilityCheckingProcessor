@@ -54,4 +54,5 @@ jobs:
           export TWILIO_ACCOUNT_SID="$TWILIO_ACCOUNT_SID"
           export TWILIO_AUTH_TOKEN="$TWILIO_AUTH_TOKEN"
           sudo systemctl stop flight-checker.service
-          sudo systemctl start flight-checker.service
+#          sudo systemctl start flight-checker.service
+          ./check-new-flights.sh
