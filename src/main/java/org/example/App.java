@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     static final String originCountry = "Sydney";
-    static final int month = 9;
+    static final int month = 10;
     static final int onwardsDate = 1;
     public static void main(String[] args) {
         logger.info("Account SID: {}, Auth_token: {}, KK_mobile: {}, CV_MOBILE: {}",
